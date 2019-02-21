@@ -1,22 +1,18 @@
 <?php
 
 use yii\db\Migration;
-use yii\db\Schema;
 
 /**
- * Class m190221_091004_add_images_table
+ * Class m190221_105936_add_image_path_to_image
  */
-class m190221_091004_add_images_table extends Migration
+class m190221_105936_add_image_path_to_image extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('images', [
-            'id' => Schema::TYPE_PK,
-            'name' => Schema::TYPE_STRING
-        ]);
+        $this->addColumn('image', 'image_path', $this->string());
     }
 
     /**
@@ -24,7 +20,7 @@ class m190221_091004_add_images_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('images');
+        $this->dropColumn('image', 'image_path');
     }
 
     /*
@@ -36,7 +32,7 @@ class m190221_091004_add_images_table extends Migration
 
     public function down()
     {
-        echo "m190221_091004_add_images_table cannot be reverted.\n";
+        echo "m190221_105936_add_image_path_to_image cannot be reverted.\n";
 
         return false;
     }
