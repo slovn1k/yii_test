@@ -8,6 +8,6 @@ use yii\widgets\ActiveForm;
 
 <?= $form->field($model, 'imageFile')->fileInput() ?>
 
-<button>Submit</button>
+<button class="btn">Submit</button>
 
 <?php ActiveForm::end() ?>
