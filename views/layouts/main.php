@@ -46,6 +46,7 @@ AppAsset::register($this);
             ['label' => 'Form', 'url' => ['/site/entry']],
             ['label' => 'Countries', 'url' => ['/country/index']],
             ['label' => 'Upload', 'url' => ['/site/upload']],
+            ['label' => 'Image', 'url' => ['/image/index']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

@@ -27,10 +27,11 @@ class Country extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code', 'name'], 'required'],
+            [['code', 'name', 'image'], 'required'],
             [['population'], 'integer'],
             [['code'], 'string', 'max' => 2],
             [['name'], 'string', 'max' => 52],
+            [['image'], 'string'],
             [['code'], 'unique'],
         ];
     }
@@ -44,6 +45,7 @@ class Country extends \yii\db\ActiveRecord
             'code' => 'Code',
             'name' => 'Name',
             'population' => 'Population',
+            'image' => 'Image',
         ];
     }
 }
