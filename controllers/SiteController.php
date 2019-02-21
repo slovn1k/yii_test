@@ -2,17 +2,11 @@
 
 namespace app\controllers;
 
-use app\models\EntryForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
-use app\models\UploadForm;
-use yii\web\UploadedFile;
-
 class SiteController extends Controller
 {
     /**
@@ -74,19 +68,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        //
     }
 
     /**
@@ -96,9 +78,7 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
+        //
     }
 
     /**
@@ -108,15 +88,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        //
     }
 
     /**
@@ -126,44 +98,6 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
-    }
-
-    /**
-     * @param string $message
-     * @return string
-     */
-    public function actionSay($message = 'Hello')
-    {
-        return $this->render('say', ['message' => $message]);
-    }
-
-    /**
-     * @return string
-     */
-    public function actionEntry()
-    {
-        $model = new EntryForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            return $this->render('entry-form', ['model' => $model]);
-        } else {
-            return $this->render('entry', ['model' => $model]);
-        }
-    }
-
-    public function actionUpload()
-    {
-        $model = new UploadForm();
-
-        if (Yii::$app->request->isPost) {
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-            if ($model->upload()) {
-                Yii::$app->session->setFlash('success', 'Image uploaded successfully');
-                return $this->render('upload', ['model' => $model]);
-            }
-        }
-
-        return $this->render('upload', ['model' => $model]);
+        //
     }
 }
